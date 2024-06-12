@@ -1,30 +1,60 @@
-# React + TypeScript + Vite
+# Task List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
+I have developed a simple yet functional task management application using [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). This project, initialized with [Vite](https://vitejs.dev/). It includes some features such as adding tasks, filtering tasks, marking tasks as complete, and removing tasks. Detailed instructions on how to run this application are provided below.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Clone the repository
 
-## Expanding the ESLint configuration
+```
+Bash
+git clone https://github.com/aklimairen/task-list-app.git
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+cd task-list-app  # Change the directory to project folder
+npm install  # Install dependencies 
+npm run dev  # Start the development server
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Prerequisites
+
+```
+Node.js and npm (or yarn) installed on your system.
+```
+
+
+
+### Tech stack
+
+```
+Core:
+- ReactJS
+- TypeScript
+- TailwindCSS
+
+Communication tool:
+- fetch
+```
+
+
+## Task List
+Below is the list of tasks and their completion status, outlining what I was supposed to do as part of the take-home challenge and what has been accomplished:
+
+- [x] Add new tasks.
+- [x] Mark tasks as complete.
+- [x] Filter tasks based on their completion status.
+- [x] Persist tasks in local storage so that they remain after a page refresh.
+- [x] Click a “Load previous tasks ...” - button on the bottom of the list, that calls this API
+(https://my-json-server.typicode.com/typicode/demo/posts)
+- [x] During the API call, the button should be disabled and a text with "Loading tasks..." should be
+shown until the posts are loaded. When the posts are loaded, present them in the same list
+layout as "Today’s Tasks”. If an error occurs during the process, show the error message “Tasks
+could not be loaded.”
+- [x] Add the ability to delete tasks.
+- [x] Implement a confirmation dialog before deleting a task.
+- [x] Use a CSS framework like Tailwind CSS for styling.
+- [ ] Add a due date to tasks and sort them based on the due date.
+
+
+## Preview
+
+<img src="/preview.png" height="500" style="border-radius:10px;margin-bottom:1rem;" />

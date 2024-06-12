@@ -127,7 +127,7 @@ const TaskList: React.FC<Props> = ({ todos, setTodos }) => {
       <button
         onClick={fetchData}
         disabled={loading}
-        className="px-4 py-4 rounded-full text-white font-medium text-center bg-sky-500 hover:bg-sky-600 active:bg-sky-700 focus:outline-none  absolute -bottom-14 left-0 right-0  my-0 mx-auto max-w-56"
+        className="px-4 py-4 rounded-full text-white font-medium text-center bg-sky-500 hover:bg-sky-600 active:bg-sky-700 focus:outline-none  absolute -bottom-14 left-1/2 transform -translate-x-1/2"
       >
         {loading ? "Loading tasks..." : "Load previous tasks ..."}
       </button>

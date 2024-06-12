@@ -4,7 +4,7 @@
 I have developed a simple yet functional task management application using [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). This project, initialized with [Vite](https://vitejs.dev/). It includes some features such as adding tasks, filtering tasks, marking tasks as complete, and removing tasks. Detailed instructions on how to run this application are provided below.
 
 
-### Clone the repository
+### Clone the repository and run
 
 ```
 Bash

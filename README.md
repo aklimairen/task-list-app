@@ -1,7 +1,7 @@
 # Task List App
 
 ## Introduction
-I have developed a simple yet functional task management application using [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). This project, initialized with [Vite](https://vitejs.dev/). It includes some features such as adding tasks, filtering tasks, marking tasks as complete, and removing tasks. Detailed instructions on how to run this application are provided below.
+I have developed the task management application using [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). This project initialized with [Vite](https://vitejs.dev/). It includes some features such as adding tasks, filtering tasks, marking tasks as complete, and removing tasks. Detailed instructions on how to run this application are provided below.
 
 
 ### Clone the repository and run
@@ -10,7 +10,7 @@ I have developed a simple yet functional task management application using [Reac
 Bash
 git clone https://github.com/aklimairen/task-list-app.git
 
-cd task-list-app  # Change the directory to project folder
+cd task-list-app  # Change the directory to project's folder
 npm install  # Install dependencies 
 npm run dev  # Start the development server
 ```

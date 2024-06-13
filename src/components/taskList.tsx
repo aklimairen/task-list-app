@@ -30,7 +30,7 @@ const TaskList: React.FC<Props> = ({ todos, setTodos }) => {
   });
 
   return (
-    <div className="relative">
+    <div className="relative min-h-96">
       {/* Todo filter buttons */}
       <div className="filter-buttons">
         <button

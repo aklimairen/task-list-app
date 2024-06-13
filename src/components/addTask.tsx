@@ -1,41 +1,37 @@
 import React, { useState } from "react";
 import { Todo } from "./model";
 
-/**
- * AddTaskForm component: Provides a form for users to add new todo items.
- * @param {Todo[]} props.todos - Array of todo objects representing the todo list.
- * @param {React.Dispatch<React.SetStateAction<Todo[]>>} props.setTodos - Function to update the todos state.
- *
- */
 interface Props {
-  todos: Todo[];
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  todos: Todo[]; // Array of todo objects representing the todo list.
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>; // Function to update the todos state.
 }
 
 const AddTaskForm: React.FC<Props> = ({ todos, setTodos }) => {
-  // State to manage the user's input for the new todo item
+  // AddTaskForm component: Provides a form for users to add new todo items.
+
   const [newTodo, setNewTodo] = useState<string>("");
 
-  // Function to handle the form submission for adding a new todo
   const handleAddTodo = (e: React.FormEvent) => {
+    /**
+     * Prevents default form submission, checks for non-whitespace input, creates
+     * a new todo object with a unique ID and 'isDone' set to false as newly created task status should be open, adds it to
+     * the todo list, and clears the input field.
+     */
     e.preventDefault();
-    // Check if the new todo input is not empty after trimming whitespace
     if (newTodo.trim()) {
-      // Create a new todo object with a unique ID, the user's input, and 'isDone' set to false (not done)
       setTodos([...todos, { id: Date.now(), todo: newTodo, isDone: false }]);
-      // Clear the input field for the next todo
       setNewTodo("");
     }
   };
 
   return (
     <>
-      {/* Form to add a new todo*/}
+      {/* Form to add a new Task */}
       <form
         onSubmit={handleAddTodo}
         className="relative flex mt-10 md:mt-4 my-3"
       >
-        {/* Input filed */}
+        {/* Input field */}
         <input
           className="block w-full px-3 py-3 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
       focus:outline-none focus:order-none"

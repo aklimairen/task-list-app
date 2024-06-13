@@ -1,24 +1,15 @@
-/**
- *
- * - React: Core library for building interfaces.
- * - AiFillDelete: imported icon from react icons for Delete action
- * - Todo: Interface for a todo item. (Located in ./components/model)
- *
- */
 import React from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { Todo } from "./model";
 
 /**
- * SingleTask component: Renders a single todo item within the Todo List.
+ * Functional component representing a single task in a todo list.
+ * Handles deletion and toggling of task completion status.
  *
- * @param {Object} props - Component properties.
- * @param {number} props.index - Index of the todo item in the todos list.
- * @param {Todo} props.todo - The individual todo object.
- * @param {Todo[]} props.todos - The complete list of todo items.
- * @param {React.Dispatch<React.SetStateAction<Todo[]>>} props.setTodos - Function to update the todos state.
- *
- * @returns {JSX.Element} - JSX element representing the single todo item.
+ * @param {number} index - Index of the task in the list.
+ * @param {Todo} todo - The todo object containing task details.
+ * @param {Todo[]} todos - The array of all todos.
+ * @param {React.Dispatch<React.SetStateAction<Todo[]>>} setTodos - Function to update the todos state.
  */
 const SingleTask: React.FC<{
   index: number;
@@ -27,13 +18,13 @@ const SingleTask: React.FC<{
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }> = ({ todo, todos, setTodos }) => {
   const handleDelete = () => {
-    // Confirmation before deletion
+    // Function for deleting a Task from the list
     if (window.confirm("Are you sure? You want to Delete this task?")) {
       setTodos(todos.filter((todoItem) => todoItem.id !== todo.id));
     }
   };
   const handleDone = (id: number) => {
-    // Function to toggle the 'done' state of a todo item
+    // Toggle the 'done' state of a todo item
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
@@ -48,7 +39,7 @@ const SingleTask: React.FC<{
         <input
           type="checkbox"
           id={`todo-${todo.id}`}
-          checked={todo.isDone} // Set checked based on isDone state
+          checked={todo.isDone}
           onChange={() => handleDone(todo.id)}
           className="mr-2"
         />

@@ -4,8 +4,6 @@ import SingleTodo from "./singleTask";
 
 /**
  * TaskList component: Manages the list of todo items and their display.
- *
- * @param {Object} props - Component properties.
  * @param {Todo[]} props.todos - Array of todo objects representing the todo list.
  * @param {React.Dispatch<React.SetStateAction<Todo[]>>} props.setTodos - Function to update the todos state.
  * @param {Todo[]} props.completedTodos - Array of completed todo objects.
@@ -33,53 +31,53 @@ const TaskList: React.FC<Props> = ({ todos, setTodos }) => {
     return true;
   });
 
-  // Function to fetch data from the API and update the todo list
   const fetchData = async () => {
+    /**
+     * Fetches data from the API endpoint and updates the todo list with new tasks if available.
+     * Sets loading state during the fetch operation and handles messages based on fetch results.
+     */
     if (dataFetched) {
       setFetchMessage("You have already fetched all the data.");
       return;
     }
-
-    setLoading(true); // Set loading to true before starting the fetch
-    setFetchMessage(""); // Clear any previous messages
+    setLoading(true);
+    setFetchMessage("");
 
     try {
       const response = await fetch(
         "https://my-json-server.typicode.com/typicode/demo/posts"
-      ); // Replace with your API URL
+      );
       const data = await response.json();
 
+      // Filter out tasks already in the todo list and create new todo objects
       const existingIds = todos.map((todo) => todo.id);
       const newTodos = data
-        .filter((item: any) => !existingIds.includes(item.id)) // Filter out items with existing IDs
+        .filter((item: any) => !existingIds.includes(item.id))
         .map((item: any) => ({
           id: item.id,
           todo: item.title,
-          isDone: false, // Assuming new todos from API are not done
+          isDone: false,
         }));
 
       if (newTodos.length > 0) {
-        setTodos((prevTodos) => [...prevTodos, ...newTodos]); // Use functional update to avoid stale state
+        setTodos((prevTodos) => [...prevTodos, ...newTodos]);
       } else {
         setFetchMessage("No new tasks to fetch.");
       }
 
-      setDataFetched(true); // Set the dataFetched state to true
+      setDataFetched(true); // Mark data as fetched
     } catch (error) {
       console.error("Failed to fetch data", error);
       setFetchMessage("Failed to fetch data.");
     } finally {
-      setLoading(false); // Set loading to false after the fetch is complete
+      setLoading(false);
     }
   };
 
-  // useEffect hook to handle fetch message visibility
+  // Manage the visibility of fetch messages (Clears the fetch message after 3 seconds if a message is present).
   useEffect(() => {
     if (fetchMessage) {
-      // Set a timeout to hide the message after 3 seconds
       const timeoutId = setTimeout(() => setFetchMessage(""), 3000);
-
-      // Cleanup function to clear the timeout when the component unmounts
       return () => clearTimeout(timeoutId);
     }
   }, [fetchMessage]);

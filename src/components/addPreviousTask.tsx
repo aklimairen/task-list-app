@@ -65,12 +65,14 @@ const LoadPreviousTask: React.FC<Props> = ({ setTodos, todos }) => {
   return (
     <>
       {fetchMessage && (
-        <p className="text-center text-red-700">{fetchMessage}</p>
+        <p className="text-center text-red-700 absolute -bottom-5 left-1/2 transform -translate-x-1/2 ">
+          {fetchMessage}
+        </p>
       )}
       <button
         onClick={fetchData}
         disabled={loading}
-        className="px-4 py-4 rounded-full text-white font-medium text-center bg-sky-500 hover:bg-sky-600 active:bg-sky-700 focus:outline-none absolute -bottom-14 left-1/2 transform -translate-x-1/2"
+        className="px-4 py-4 rounded-full text-white font-medium text-center bg-sky-500 hover:bg-sky-600 active:bg-sky-700 focus:outline-none absolute -bottom-14 left-1/2 transform -translate-x-1/2 min-w-52"
       >
         {loading ? "Loading tasks..." : "Load previous tasks ..."}
       </button>
